@@ -8,7 +8,7 @@ jobs:
           run: |
             git clone -b v1.3-beta21 --single-branch --recursive https://github.com/aseprite/aseprite.git
             git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-            git clone -b --single-branch aseprite-m102 https://github.com/aseprite/skia.git
+            git clone -b aseprite-m102 --single-branch https://github.com/aseprite/skia.git
             export PATH="${PWD}/depot_tools:${PATH}"
             cd ./skia
             python tools/git-sync-deps
