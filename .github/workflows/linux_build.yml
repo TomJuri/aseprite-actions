@@ -2,7 +2,7 @@ name: linux_build
 on: [workflow_dispatch]
 jobs:
     Build:
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-bionic
       steps:
         - name: Checkout
           uses: actions/checkout@v3.3.0
@@ -13,5 +13,4 @@ jobs:
         - name: Install packages
           run: |
             sudo apt update -y
-            sudo apt upgrade -y
             sudo apt install -y g++ clang-10 libc++-10-dev libc++abi-10-dev cmake ninja-build libx11-dev libxcursor-dev libxi-dev libgl1-mesa-dev libfontconfig1-dev
