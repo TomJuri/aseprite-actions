@@ -6,14 +6,11 @@ jobs:
       steps:
         - name: Create folders
           run: |
-            cd ~/
-            mkdir aseprite
-            mkdir skia
-            pwd
-            ls
+            mkdir ~/aseprite
+            mkdir ~/skia
         - name: cd into aseprite
           run: |
-            cd aseprite
+            cd ~/aseprite
         - name: Checkout asperite
           uses: actions/checkout@v3.3.0
           with:
@@ -22,7 +19,7 @@ jobs:
             submodules: true
         - name: cd into skia
           run: |
-            cd ../skia
+            cd ~/skia
         - name: Checkout skia
           uses: actions/checkout@v3.3.0
           with:
@@ -30,7 +27,7 @@ jobs:
             ref: aseprite-m102
         - name: cd into depot_tools
           run: |
-            cd ..
+            cd ~/
         - name: Clone depot_tools
           run: |
             git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
@@ -41,7 +38,7 @@ jobs:
             sudo apt install -y g++ clang-10 libc++-10-dev libc++abi-10-dev cmake ninja-build libx11-dev libxcursor-dev libxi-dev libgl1-mesa-dev libfontconfig1-dev
         - name: Compile skia
           run: |
-            cd skia
+            cd ~/skia
             python tools/git-sync-deps
             gn gen out/Release-x64 --args="is_debug=false is_official_build=true skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false skia_use_sfntly=false skia_use_freetype=true skia_use_harfbuzz=true skia_pdf_subset_harfbuzz=true skia_use_system_freetype2=false skia_use_system_harfbuzz=false"
             ninja -C out/Release-x64 skia modules
