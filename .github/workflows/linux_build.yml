@@ -12,6 +12,6 @@ jobs:
             submodules: true
         - name: Install packages
           run: |
-            - sudo apt update
-            - sudo apt upgrade -y
-            - sudo apt install -y g++ clang-10 libc++-10-dev libc++abi-10-dev cmake ninja-build libx11-dev libxcursor-dev libxi-dev libgl1-mesa-dev libfontconfig1-dev
+            sudo apt update -y
+            sudo apt upgrade -y
+            sudo apt install -y g++ clang-10 libc++-10-dev libc++abi-10-dev cmake ninja-build libx11-dev libxcursor-dev libxi-dev libgl1-mesa-dev libfontconfig1-dev
