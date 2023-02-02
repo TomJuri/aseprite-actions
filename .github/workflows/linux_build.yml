@@ -4,6 +4,9 @@ jobs:
     Build:
       runs-on: ubuntu-18.04
       steps:
+        - name: Install dependencies
+          run: |
+            sudo apt-get install -y g++ clang-10 libc++-10-dev libc++abi-10-dev cmake ninja-build libx11-dev libxcursor-dev libxi-dev libgl1-mesa-dev libfontconfig1-dev
         - name: Clone aseprite
           run: |
             git clone -b v1.3-beta21 --single-branch --recursive https://github.com/aseprite/aseprite.git
