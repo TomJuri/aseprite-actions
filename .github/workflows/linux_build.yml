@@ -6,20 +6,31 @@ jobs:
       steps:
         - name: Create folders
           run: |
+            cd ~/
             mkdir aseprite
             mkdir skia
-            mkdir depot_tools
+            pwd
+            ls
+        - name: cd into aseprite
+          run: |
+            cd aseprite
         - name: Checkout asperite
           uses: actions/checkout@v3.3.0
           with:
             repository: aseprite/aseprite
             ref: v1.3-beta21
             submodules: true
+        - name: cd into skia
+          run: |
+            cd ../skia
         - name: Checkout skia
           uses: actions/checkout@v3.3.0
           with:
             repository: aseprite/skia
             ref: aseprite-m102
+        - name: cd into depot_tools
+          run: |
+            cd ..
         - name: Clone depot_tools
           run: |
             git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
