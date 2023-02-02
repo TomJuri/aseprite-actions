@@ -4,11 +4,17 @@ jobs:
     Build:
       runs-on: ubuntu-18.04
       steps:
-        - name: Create folders
+        - name: Clone aseprite
           run: |
             git clone -b v1.3-beta21 --single-branch --recursive https://github.com/aseprite/aseprite.git
+        - name: Clone depot_tools
+          run: |
             git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+        - name: Clone skia
+          run: |
             git clone -b aseprite-m102 --single-branch https://github.com/aseprite/skia.git
+        - name: Build skia
+          run: |
             export PATH="${PWD}/depot_tools:${PATH}"
             cd ./skia
             python tools/git-sync-deps
